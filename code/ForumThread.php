@@ -37,6 +37,14 @@ class ForumThread extends DataObject {
 		"SearchFields" => array('type'=>'fulltext', 'name'=>'SearchFields', 'value'=>'Title'),
 	);
 	
+	
+	public function __construct($record = null, $isSingleton = false, $model = null) {
+		self::$create_table_options = array(
+			'MySQLDatabase' => 'ENGINE = MYISAM'
+		);
+		return parent::__construct($record = null, $isSingleton = false, $model = null);
+	}
+	
 	/**
 	 * When rebuilding the database we need to ensure that all the threads have been assigned
 	 * a last post and when people upgrade to this version running the rebuild should fix the data
